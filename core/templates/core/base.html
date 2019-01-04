@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Comunidad Informática|{%block title%}{%endblock%}</title>
+	<link rel="shortcut icon" href="{% static 'core/assets/fav.ico' %}" type="image/x-icon">
+	<link rel="stylesheet" href="{% static 'core/css/normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'core/css/flexboxgrid.css' %}">
+	<link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header class="row center-xs middle-xs">
+		<div class="col-xs-12 row logo middle-xs title">
+			<div class="col-xs-6 end-xs">
+                <h2><a href="{% url 'home' %}">Comunidad Informática</a></h2>
+			</div>
+			<div class="col-xs-6 start-xs eslogan">
+				<h5 class="title typewritter-title"><span class="typewritter-text"> </span></h5>
+			</div>
+		</div>
+	</header>
+	<section class="center-xs middle-xs" id="cabecera">
+		<h4>Cabe destacar que este proyecto es solo una demo de Github y no deseamos crear esta comunidad, así que dejamos el proyecto libre para todos.</h4>
+	</section>
+	<main class="main">
+		{% block content %}
+		{% endblock %}
+	</main>
+	<footer class="center-xs">
+		<h2>© Todos los derechos reservados a <a class="jose" href="http://github.com/Jo-Sword" target="_blank" title="Ver sus trabajos">Jo-Sword</a>,<a class="joseph" href="http://github.com/KronosLATesla" target="_blank" title="Ver sus trabajos">KronosLATesla</a> y
+            <a href="https://github.com/ChekeGT" class="cheke" style="color:#16db93;">ChekeGT</a></h2>
+	</footer>
+	<script src="{% static 'core/js/scripts.js' %}"></script>
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>

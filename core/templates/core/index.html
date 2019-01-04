@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+    {% load  static %}
+    {% if 'redirected' in request.GET %}
+        <p style="color:red;">No hay preguntas en la otra pagina, y has sido redireccionado a esta puedes crear una <a
+                href="{% url 'create_question' %}">aqui</a></p>
+    {% endif %}
+    <section class="row top-xs" id="contenido">
+		<div class="col-xs-12 col-sm-8 item-father">
+            {% include 'core/includes/questions.html' %}
+            {% include 'core/includes/paginator.html' %}
+        </div>
+    {% include 'core/includes/nav_bar.html' %}
+	</section>
+{% endblock %}

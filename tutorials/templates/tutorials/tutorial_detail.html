@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block title%}{{ tutorial.title }}{% endblock %}
+{% block content %}
+    {% load static %}
+    <figure>
+        {% if tutorial.author.profile.avatar %}
+            <img src="{{ tutorial.author.profile.avatar.url }}" alt="Avatar de:{{ tutorial.author.username }}">
+        {% else %}
+            <img src="{% static 'registration/img/no-avatar.jpg' %}" alt="Sin avatar">
+        {% endif %}
+        <figcaption>Creador:{{ tutorial.author.username|capfirst }}</figcaption>
+    </figure>
+    <h3 class="title">{{ tutorial.title }}</h3>
+    <h5 class="subtitle">Lenguaje:{{ tutorial.language }}</h5>
+    {% if tutorial.author == request.user %}
+        <p><a href="{% url 'tutorial_delete' tutorial.pk %}">Borrar Tutorial</a></p>
+        <p><a href="{% url 'tutorial_update' tutorial.pk%}">Editar Tutorial</a></p>
+    {% endif %}
+    {% if tutorial.image %}
+        <figure>
+            <img src="{{ tutorial.image.url }}" alt="Imagen sobre:{{ tutorial.title }}">
+        </figure>
+    {% endif %}
+    <p>{{ tutorial.content|linebreaks }}</p>
+    {% if tutorial.video %}
+        <video src="{{ tutorial.video.url }}" controls="controls"></video>
+    {% endif %}
+{% endblock %}

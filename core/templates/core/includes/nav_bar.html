@@ -1,0 +1,28 @@
+<div class="col-sm-4 center-xs menu">
+{% load static %}
+			<ul>
+				<!-- Esto es solo para logeados -->
+                {% if request.user.is_authenticated %}
+                    {% if request.user.profile.avatar %}
+                        <li class="mini"><img src="{{ request.user.profile.avatar.url }}" height="30" width="30" style="vertical-align: middle"> <a href="{% url 'update_profile' %}">Ver Perfil</a></li>
+                    {% else %}
+                        <li class="mini"><img src="{% static 'registration/img/no-avatar.jpg' %}" height="30" width="30" style="vertical-align: middle"> <a href="{% url 'update_profile' %}">Ver Perfil</a></li>
+                    {% endif %}
+                {% endif %}
+				<!-- Menu General -->
+                {% if request.user.is_staff %}
+                    <li class="mini"><a href="{% url 'tutorial_create' %}">Crear Tutorial</a></li>
+                {% endif %}
+				<li class="mini"><a href="{% url 'create_question' %}">Nuevo Tema</a></li>
+                <li><a href="{% url 'home' %}">Preguntas</a></li>
+				<li><a href="{% url 'solved_questions' %}">Resueltas</a></li>
+				<li><a href="{% url 'tutorial_list' %}">Tutoriales</a></li>
+				<!-- Para los que no están logeados -->
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Ingresar</a></li>
+                    <li><a href="{% url 'signup' %}">Registrarme</a></li>
+                {% endif %}
+			</ul>
+		</div>
