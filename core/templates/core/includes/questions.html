@@ -1,0 +1,12 @@
+{% for question in question_list %}
+    {% load static %}
+                    <div class="col-xs-12 item">
+                        {% if question.author.profile.avatar %}
+                            <a href="#" title="Ver Perfil"><img src="{{ question.author.profile.avatar.url }}" height="80" width="80"></a>
+                        {% else %}
+                            <a href="#" title="Ver Perfil"><img src="{% static 'registration/img/no-avatar.jpg' %}" height="80" width="80"></a>
+                        {% endif %}
+                        <a href="{% url 'question_detail' question.pk question.title|slugify %}"><h2>{{ question.title }} <small class="{{ question.language.lower }}">{{ question.language }}</small></h2></a>
+                        <a href="#" title="Ver Perfil"><small>- {{ question.author.username }}</small></a>
+                    </div>
+{% endfor %}

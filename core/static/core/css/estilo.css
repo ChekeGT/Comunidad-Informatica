@@ -1,0 +1,224 @@
+/*
+*	Diseño creado por Jo-Sword - 2018
+*/
+*{box-sizing: border-box;transition: .3s linear all}
+body{overflow-x: hidden}
+hr{margin: 0;border-color: #555}
+h1{font-size: 2em}
+h2{font-size: 1.5em}
+
+/* Header, nav y footer */
+header,footer{
+	background: #fff;
+	color: #212121
+}
+header .logo{margin: 0}
+header .title h4, header .title h5{margin: 0;padding: 15px 0}
+/* Cabecera */
+#cabecera{padding: 15px}
+#cabecera h4{margin: 0;font-size: 1em}
+/* Navegador Móvil */
+nav,#cabecera{background: #333;color: #fff}
+nav ul{padding: 0;margin:0;list-style: none}
+
+nav ul li{padding: 15px;border-right: 1px solid #555}
+nav ul li:last-child{border-right: none}
+nav ul li:hover, nav ul li.activo{background: #fff}
+nav ul li a{color: #fff;text-decoration: none}
+nav ul li:hover a, nav ul li.activo a{color: #212121}
+/* Contenido */
+
+#contenido{background: #333;color: #fff}
+#contenido .menu{background: #333;color: #fff;padding-left: 0}
+#contenido .menu ul{list-style: none;margin: 0;padding: 0}
+#contenido .menu ul li{
+    background: #333;
+    padding: 20px 0;
+    border-left: 2px solid #555;
+    border-bottom: 1px solid #555;
+    transition: background .2s ease;
+    position: relative;
+}
+#contenido .menu ul li.activo{border-left: none;background: #fff}
+#contenido .menu ul li.activo a{color: #333}
+#contenido .menu ul li:not(.activo)::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: #555;
+    transition: height 1s ease;
+}
+#contenido .menu ul li:hover::before{
+	height: 100%
+}
+#contenido .menu .mini{padding: 10px 0}
+#contenido .menu .mini img{vertical-align: middle}
+#contenido .menu ul li:hover{background: #eee}
+#contenido .menu ul li:hover a{color: #333}
+#contenido .menu ul li:last-child{border-bottom: none}
+#contenido .menu ul li a{color: #fff;text-decoration: none}
+#contenido .item-father{padding-right:0;background: #fff;color: #212121;display: flex;flex-direction: column}
+#contenido .item{display: flex;padding: 5px 25px;flex-direction: row;position: relative;border-bottom: 1px solid #eee}
+#contenido .item:last-child{border-bottom: none}
+#contenido .item a img{
+	border:2px solid #eee;
+	border-radius: 100%
+}
+#contenido .item h2{margin: 10px 0 0 5px;text-overflow: ellipsis;overflow: hidden}
+#contenido .item a{text-decoration: none}
+#contenido .item h2 small{
+    background: #333;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 0.6em;
+    padding: 5px 10px;
+    position: relative;
+    top: -3px
+}
+#contenido .item h2 small.html{background: #e48540}
+#contenido .item h2 small.python{ background:#214e34}
+#contenido .item h2 small.json{ background:#462255 }
+#contenido .item h2 small.java{ background:#ddfff7  }
+#contenido .item h2 small.c++{ background:#3ed1d6   }
+#contenido .item h2 small.css{background: #409fe4}
+#contenido .item h2 small.js{background: #e4d140}
+#contenido .item h2 small.php{background: #5369bf}
+#contenido .item > a{color: #212121}
+#contenido .item > a > small{
+	height: 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 115px
+}
+/* Footer */
+
+footer h2{margin: 0;padding: 20px 0}
+footer .jose, footer .joseph, footer .cheke{text-decoration: none;position: relative}
+footer .jose::before, footer .joseph::before, footer .cheke::before{
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    background: #333;
+    width: 15px;
+    height: 2px;
+    transition: all .5s ease;
+    border-radius: 50px 50px 0 0
+}
+footer .jose{color: #21c2e1;padding: 6px 5px;transition: .4s linear all;border-radius: 0 0 10px 10px}
+footer .joseph{color: #e12121;padding: 6px 5px;transition: .4s linear all;border-radius: 0 0 10px 10px}
+footer .cheke{color: #b2ffd6;padding: 6px 5px;transition: .4s linear all;border-radius: 0 0 10px 10px}
+
+/* Paginacion */
+.paginacion {
+    font-size: 1rem;
+	padding: 10px;
+}
+.paginacion-anterior, .paginacion-siguiente, .paginacion-link, .paginacion-ellipsis {
+    font-size: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    justify-content: center;
+    margin: 0.25rem;
+    text-align: center;
+}
+.paginacion-anterior, .paginacion-siguiente, .paginacion-link, .paginacion-ellipsis {
+    display: inline-flex;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    align-items: center;
+    font-size: 1rem;
+    height: 2.25em;
+}
+.paginacion-anterior, .paginacion-siguiente, .paginacion-link {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border-color: #dbdbdb;
+    color: #363636;
+    min-width: 2.25em;
+}
+
+.paginacion-anterior, .paginacion-siguiente, .paginacion-link, .paginacion-ellipsis {
+    font-size: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    justify-content: center;
+    margin: 0.25rem;
+    text-align: center;
+}
+.paginacion, .paginacion-list {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    list-style: none
+}
+.paginacion-list a, .paginacion-anterior, .paginacion-siguiente{text-decoration: none}
+.paginacion-link.activo {
+    background-color: #333;
+    border-color: #212121;
+    color: #fff;
+}
+.paginacion-anterior:hover, .paginacion-siguiente:hover, .paginacion-link:not(.activo):hover {
+    border-color: #b5b5b5;
+    color: #363636;
+}
+/* Responsive Web Design */
+@media screen and (max-width: 767px), print{
+	h1{font-size: 1.5em}
+	h2{font-size: 1em}
+	footer .jose::before, footer .joseph::before, footer .cheke::before{display: none}
+	.menu{display: none}
+	#cabecera h4{margin: 0;font-size: 0.8em}
+	.paginacion{flex-wrap: wrap}
+    #contenido .item h2 small{
+        font-size: 0.6em;
+        top: -1px
+    }
+}
+
+@media screen and (min-width: 768px), print{
+	footer .jose::before{background: #1ca2bb}
+	footer .joseph::before{background: #bb1c1c}
+    footer .cheke::before{background: #16db93}
+	footer .jose:hover::before, footer .joseph:hover::before, footer .cheke:hover::before{width: 100%;height: 3px}
+	footer .jose:hover{background: #21c2e1;color: #fff;border-bottom: 3px solid #1ca2bb}
+    footer .cheke:hover{background: #b2ffd6;color: #fff;border-bottom: 3px solid #b2ffd6}
+	footer .joseph:hover{background: #e12121;color: #fff;border-bottom: 3px solid #bb1c1c}
+	.paginacion{justify-content: space-between}
+	.paginacion .paginacion-anterior {order: 1}
+	.paginacion-list {
+	    flex-grow: 1;
+	    flex-shrink: 1;
+	    justify-content: flex-start;
+	    order: 1
+	}
+	.paginacion .paginacion-list {justify-content: center;order: 2}
+	.paginacion .paginacion-siguiente {order: 3}
+}
+
+/* TypeWritter */
+/* Typewritter */
+.typewritter-text{
+  position: relative;
+}
+
+.typewritter-text::after{
+  content: "";
+  position: absolute;
+  height: 100%;
+  border-right: 1px solid #000;
+  animation: writte 1s infinite;
+}
+
+@keyframes writte{
+  0%, 50%{
+    opacity: 0;
+  }
+  75%, 100%{
+    opacity: 1;
+  }
+}

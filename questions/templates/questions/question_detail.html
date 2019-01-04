@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ question.title }}{% endblock %}
+{% block content%}
+    {% load static %}
+    <article class="top-xs" id="contenido" style="color:#000000; background: #fff;">
+        <h3 class="ui-dialog-title">{{ question.title }}</h3>
+        <p>Autor:</p>
+        <figure>
+            {% if question.author.profile.avatar %}
+            <img class="img-fluid" width="150px" src="{{ question.author.profile.avatar.url }}" alt="{{ question.author.username }}">
+            {% else %}
+                <img src="{% static 'registration/img/no-avatar.jpg' %}" alt="Sin avatar :c" class="img-fluid">
+            {% endif %}
+            <figcaption>{{ question.author.username|capfirst }}</figcaption>
+        </figure>
+        <p>{{ question.description|linebreaks }}</p>
+        <p class="text-info">Fecha de creacion:{{ question.created|date:"SHORT_DATE_FORMAT"   }}</p>
+        {% if request.user == question.author %}
+            <p><a href="{% url 'question_delete' question.pk %}">Borrar</a></p>
+            <p><a href="{% url 'question_update' question.pk %}">Editar</a></p>
+            <p>Si ya resolviste este problema, escribe "resuelto" en los comentarios</p>
+        {% endif %}
+        <div>
+            <textarea id="comment" class="form-control mb-2 mt-3" rows="3" placeholder="Escribe tu comentario aqui:" >
+            </textarea>
+          <button id="send" class="btn btn-primary btn-sm btn-block" disabled>Enviar Mensaje</button>
+        </div>
+        <div class="col-md-8" id="comments">
+            {% for comment in question.comments.all %}
+                {% if forloop.first %}
+                <div class="mine mb-3 mt-5">
+                {% else %}
+                    <div class="mine mb-3">
+                {% endif %}
+                    <figure class="img-fluid">
+                        {% if comment.author.profile.avatar %}
+                        <img class="img-fluid" width="50" src="{{ comment.author.profile.avatar.url }}" alt="{{ comment.author.username }}">
+                        {% else %}
+                            <img src="{% static 'registration/img/no-avatar.jpg' %}" alt="{{ coment.author.username }}" class="img-fluid">
+                        {% endif %}
+                        <figcaption>{{ comment.author.username }}</figcaption>
+                    </figure>
+                    <p class="text-info">{{ comment.text }}</p>
+                    <p class="text-info">Fecha De Creacion:{{ comment.created|date:"SHORT_DATE_FORMAT" }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+     <script>
+              document.getElementById('comment').value = '';
+              var send = document.getElementById("send");
+              send.addEventListener("click", function(){
+                  var comment = encodeURIComponent(document.getElementById('comment').value);
+                  if (comment.length > 0){
+                  const url = "{% url 'add_comment' object.pk %}"+ '?comment=' + comment;
+                  fetch(url, {'credentials':"include"}).then(response => response.json()).then(function (data) {
+                      if (data.created){
+                          document.getElementById('comment').value = '';
+                          send.disabled = true;
+                          var comment_box = document.createElement('div');
+                          comment_box.innerHTML = ' <figure class="img-fluid">\n' +
+                              {% if request.user.profile.avatar %}
+                              '                        <img class="img-fluid" width="50" src="{{ request.user.profile.avatar.url }}" alt="{{ request.user.username }}">\n' +
+                              {% else %}
+
+                              '                        <img class="img-fluid" width="50" src="{% static 'registration/img/no-avatar.jpg' %}" alt="{{ request.user.username }}">\n' +
+                              {% endif %}
+                              '                        <figcaption>{{ request.user.username }}</figcaption>\n' +
+                              '                    </figure>\n' +
+                              '                    <p class="text-info">'+ decodeURIComponent(comment) + '</p>\n' +
+                              '                    <p class="text-info">Fecha De Creacion:Justo Ahora</p>\n' +
+                              '                </div>';
+                          document.getElementById('comments').appendChild(comment_box);
+                      }
+                  })}
+              });
+              var comment = document.getElementById("comment");
+              comment.addEventListener('keyup', function(){
+                  if(!this.checkValidity() ||!this.value){
+                      send.disabled = true;
+                  }
+                  else{
+                          send.disabled = false;
+                      }
+
+              });
+          </script>
+{% endblock %}

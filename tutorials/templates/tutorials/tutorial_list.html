@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %} Tutoriales{% endblock %}
+{% load static %}
+{% block content %}
+    <section class="row top-xs" id="contenido">
+        <div class="col-xs-12 col-sm-8 item-father">
+        {% for tutorial in tutorial_list %}
+            <div class="col-xs-12 item">
+                {% if tutorial.author.profile.avatar %}
+                    <a href="#" title="Ver Perfil"><img src="{{ tutorial.author.profile.avatar.url }}" height="80" width="80"></a>
+                {% else %}
+                    <a href="#" title="Ver Perfil"><img src="{% static 'registration/img/no-avatar.jpg' %}" height="80" width="80"></a>
+                {% endif %}
+                <a href="{% url 'tutorial_detail' tutorial.pk tutorial.title|slugify %}"><h2>{{ tutorial.title }} <small class="{{ tutorial.language.lower }}">{{ tutorial.language }}</small></h2></a>
+                <a href="#" title="Ver Perfil"><small>- {{ tutorial.author.username }}</small></a>
+            </div>
+        {% endfor %}
+        {% include 'core/includes/paginator.html' %}
+        </div>
+        {% include 'core/includes/nav_bar.html' %}
+    </section>
+{% endblock %}

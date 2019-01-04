@@ -1,0 +1,51 @@
+form {
+    margin:auto; 
+    width: 80%;
+    max-width:600px; 
+    background: #00000062;
+    Padding: 30px;
+    Border: ipx solid rgba (0, 0, 0,0.2);
+    Color: #0000 ;
+    background: no-repeat;
+    background-size: 100% ;
+    
+
+}
+input{
+    display:block;
+    padding: 5px; 
+    width: 100%;
+    margin:20px 0;
+    font-size: 20px;
+    color: rgb(3, 3, 3) ;
+
+}
+input[type = "submit"]
+{background: linear-gradient(rgb(245, 245, 245), rgba(0, 0, 0, 0.76));
+Color : black;
+opacity: 0.8;
+cursor: pointer;
+border-radius: 40px;
+Margin-bottom: 5px; 
+
+
+}
+p {
+color: white    
+}
+input[type="submit"] :hover {
+    opacity: 1;
+}
+h2 {
+color: white
+}
+body{
+width: 320px;
+height: 740;
+background: url(tec4.jpg);
+position: absolute ; 
+top: 50% ;
+left: 50%;
+transform:translate(-50%, -50%);
+background-position: bottom ;
+}
