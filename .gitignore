@@ -11,6 +11,8 @@ local_settings.py
 db.sqlite3
 media
 */migrations/
+Comunidad-Informatica/settings.py
+Comunidad-Informatica/wsgi.py
 
 #Jetbrains Ides
 .idea/
